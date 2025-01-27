@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>First React</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+
+      li:first-of-type {
+        color: red;
+        font-weight: bold;
+      }
+
+      li:nth-of-type(2) {
+        color: red;
+        font-style: italic;
+        font-weight: bold;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    
+    function App() {
+      return <> <div>
+                <ul>
+                    <li>Aman</li>
+                    <li>Chris</li>
+                    <li>Tijan</li>
+                    <li>5</li>
+                </ul>
+              </div>
+              <p>Hello</p>
+                <DateTimeDisplay displayColor = 'green'/>
+                <DateTimeDisplay />
+                <DateTimeDisplay />
+                <DateTimeDisplay />
+                <DateTimeDisplay />
+            </>
+    }
+
+    const DateTimeDisplay = (props) => {
+    const now = new Date();
+    console.log(props.displayColor);
+    return <div style={{ color: props.displayColor }} >{now.toLocaleString()}</div>
+};
+
+    const rootNode = document.querySelector("#root");
+    const root = ReactDOM.createRoot(rootNode);
+    root.render(<App />);
+    
+  </script>
+</html>
