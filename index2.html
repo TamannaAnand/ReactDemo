@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const Parent = () => {
+
+        const answerPhone = (caller, element) => {
+            alert(`Call received from ${caller} stuck in a ${element.toLowerCase()} tag`)
+        }
+
+        // props allow you to pass data from a parent component to a child component.
+
+        return <>
+        <div>Hello from the parent here are my children.....</div>
+        <Child name="Tijan" callParent={answerPhone} />
+        <Child name="Arya" callParent={answerPhone} />
+        <Child name="Brian" callParent={answerPhone} />
+        <Child name="Mandeep" callParent={answerPhone} />
+        <Child name="Mamdou" callParent={answerPhone} />
+        </>
+      };
+
+      const Child = ({ name, callParent }) => {
+        return <div onClick={ (e) => callParent(name, e.target.tagName) }>Hello from the { name }</div>;
+      };
+
+      //attach react app to the DOM
+      const rootNode = document.querySelector("#root");
+      const root = ReactDOM.createRoot(rootNode);
+      root.render(<Parent />);
+    </script>
+  </body>
+</html>

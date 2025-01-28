@@ -11,21 +11,6 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-
-      li:first-of-type {
-        color: red;
-        font-weight: bold;
-      }
-
-      li:nth-of-type(2) {
-        color: red;
-        font-style: italic;
-        font-weight: bold;
-      }
-
-
-    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -33,10 +18,28 @@
   <script type="text/babel">
     
     function App() {
-      return <> <div>
+
+        const handleClick = (message) => {
+          alert(message);
+        }
+
+        const baseStyle = {
+          color: "red",
+          fontWeight: "bold"
+        }
+
+        const style1 = {
+          ...baseStyle,
+          fontStyle: "italic"
+        }
+
+      return <>
+       <div>
                 <ul>
-                    <li>Aman</li>
-                    <li>Chris</li>
+                    <li style={baseStyle} onClick={ () => handleClick("Aman") }>
+                      Aman
+                      </li>
+                    <li style={style1} onClick={ () => handleClick("Chris") }>Chris</li>
                     <li>Tijan</li>
                     <li>5</li>
                 </ul>
@@ -56,7 +59,7 @@
     return <div style={{ color: props.displayColor }} >{now.toLocaleString()}</div>
 };
 
-    const rootNode = document.querySelector("#root");
+    const rootNode = document.querySelector('#root');
     const root = ReactDOM.createRoot(rootNode);
     root.render(<App />);
     
